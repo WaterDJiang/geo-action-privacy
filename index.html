@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Geo Action Chrome extension privacy policy">
+  <title>Geo Action 隐私政策</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0a0a0c; --surface:#111114; --raised:#151519; --border:#27272e; --text:#f2f2f3; --muted:#92929d; --brand:#6e6af6; --mint:#72f0cf; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:radial-gradient(circle at 80% 0%,rgba(0,47,167,.3),transparent 30rem),var(--bg); color:var(--text); font:15px/1.8 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC",sans-serif; }
+    header,main,footer { width:min(860px,calc(100% - 32px)); margin-inline:auto; }
+    header { padding:56px 0 28px; border-bottom:1px solid var(--border); }
+    .brand { display:flex; align-items:center; gap:14px; color:var(--mint); font:700 12px/1.2 ui-monospace,SFMono-Regular,monospace; letter-spacing:.14em; }
+    .mark { display:grid; place-items:center; width:38px; height:38px; border-radius:10px; background:#002fa7; color:white; font:bold 22px/1 sans-serif; box-shadow:0 0 0 1px rgba(114,240,207,.35) inset; }
+    h1 { margin:28px 0 8px; font-size:clamp(30px,6vw,46px); line-height:1.15; letter-spacing:-.03em; }
+    .meta { color:var(--muted); }
+    nav { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    nav a { color:var(--text); text-decoration:none; border:1px solid var(--border); background:var(--surface); padding:7px 12px; border-radius:8px; }
+    nav a:hover,nav a:focus-visible { border-color:var(--brand); outline:none; }
+    main { padding:28px 0 56px; }
+    section { margin:0 0 18px; padding:24px; background:linear-gradient(180deg,var(--raised),var(--surface)); border:1px solid var(--border); border-radius:12px; }
+    h2 { margin:0 0 14px; font-size:20px; }
+    p { margin:0 0 12px; color:#d7d7dc; }
+    ul { margin:0; padding-left:22px; color:#d7d7dc; }
+    li + li { margin-top:7px; }
+    code { color:#b7b4ff; background:#1d1d27; padding:2px 5px; border-radius:4px; }
+    a { color:#a9a6ff; }
+    .notice { border-color:rgba(114,240,207,.3); }
+    footer { padding:24px 0 46px; color:var(--muted); border-top:1px solid var(--border); }
+    @media (max-width:560px) { header { padding-top:34px; } section { padding:18px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="mark">G</span><span>GEO ACTION · PRIVACY</span></div>
+    <h1>隐私政策</h1>
+    <div class="meta">最后更新日期：2026 年 7 月 17 日</div>
+    <nav aria-label="Policy links">
+      <a href="#data">处理的数据</a><a href="#sharing">存储与共享</a><a href="#permissions">权限</a><a href="#limited-use">Limited Use</a><a href="privacy-en.html" lang="en">English</a>
+    </nav>
+  </header>
+  <main>
+    <section class="notice">
+      <h2>概述</h2>
+      <p>Geo Action 是一款 Chrome 浏览器扩展，用于把用户主动上传或输入的 Markdown 内容，按用户选择的平台规则适配并创建为可继续编辑的内容平台草稿。本扩展不会自动公开发布内容。</p>
+    </section>
+    <section id="data">
+      <h2>我们处理的数据</h2>
+      <ul>
+        <li>用户提供的标题、摘要、标签、Markdown 正文、封面、图片链接和本地图片。</li>
+        <li>目标平台必要的登录 Cookie、会话状态或 CSRF 状态。</li>
+        <li>平台登录状态、草稿 ID、编辑链接、任务阶段、错误和时间。</li>
+        <li>本地保存的工作区、平台选择、发布清单、设置、任务历史和重复指纹。</li>
+        <li>Twitter/X 与小红书草稿流程中，为写入和验证草稿所需的目标编辑器状态。</li>
+      </ul>
+      <p style="margin-top:14px">我们不持续监控浏览历史，不扫描无关网页，不采集广告标识或行为分析数据，不把平台 Cookie、正文或图片发送给扩展开发者。</p>
+    </section>
+    <section id="sharing">
+      <h2>使用、存储与共享</h2>
+      <p>数据仅用于解析和适配 Markdown、检查登录、转存用户选择的图片、创建和验证草稿、恢复本地状态及避免重复草稿。</p>
+      <p>本地状态保存在 <code>chrome.storage.local</code>，直至用户清除扩展数据或卸载扩展。平台 Cookie 由 Chrome 和目标平台管理，不复制到 Geo Action 记录。</p>
+      <p>用户点击创建草稿后，必要内容只会直接发送到用户选择的平台；远程图片会从 Markdown 明确引用的来源读取并转存。开发者不运营内容中转服务器，不接收用户草稿或平台 Cookie。</p>
+      <p>我们不出售、出租或将数据用于广告、数据经纪、信用评估、贷款或与草稿创建无关的用途。</p>
+    </section>
+    <section id="permissions">
+      <h2>权限说明</h2>
+      <ul>
+        <li><code>storage</code>、<code>unlimitedStorage</code>：保存本地工作区、设置、历史以及较长 Markdown 和图片数据。</li>
+        <li><code>cookies</code>：检查目标平台登录状态并读取草稿流程必要的会话或 CSRF Cookie。</li>
+        <li><code>declarativeNetRequest</code>、<code>declarativeNetRequestWithHostAccess</code>：临时设置平台接口所需请求头，任务后清理。</li>
+        <li><code>sidePanel</code>：展示编辑与草稿工作流。</li>
+        <li><code>tabs</code>：打开登录页、原生编辑器、草稿和支持页面。</li>
+        <li><code>scripting</code>：仅在用户选择的 Twitter/X 或小红书编辑器中执行扩展包内脚本，写入、保存并验证草稿。</li>
+        <li><code>http://*/*</code>、<code>https://*/*</code>：访问平台注册端点和用户 Markdown 明确引用的远程图片。</li>
+      </ul>
+    </section>
+    <section>
+      <h2>安全措施</h2>
+      <p>所有可执行代码均包含在扩展包中，不加载远程代码。平台请求使用 HTTPS。身份验证 Cookie 不写入任务历史或开发者日志。遇到验证码、风控、安全验证或不兼容的平台状态时，扩展停止对应平台。</p>
+    </section>
+    <section id="limited-use">
+      <h2>Chrome Web Store Limited Use</h2>
+      <p>Geo Action 对从 Chrome 权限和目标平台获得的信息的使用，将遵守 Chrome Web Store User Data Policy（包括 Limited Use 要求）。数据仅用于本扩展明确披露的单一用途；除完成用户主动选择的草稿创建所必需外，不向第三方转移，不用于广告、数据经纪、信用评估，也不允许人工读取用户内容。</p>
+    </section>
+    <section>
+      <h2>用户控制与保留</h2>
+      <p>用户可以编辑或清除本地状态、卸载扩展删除全部本地数据、不选择任何特定平台，并在各平台草稿箱查看、编辑或删除已创建草稿。平台草稿由相应平台按其政策保留。</p>
+    </section>
+    <section>
+      <h2>儿童隐私与政策更新</h2>
+      <p>本扩展不面向 13 岁以下儿童，也不会故意收集 13 岁以下儿童的个人信息。如果数据处理方式发生变化，我们会在生效前更新本政策、商店披露和扩展内必要提示。</p>
+    </section>
+    <section>
+      <h2>联系我们</h2>
+      <p>隐私与支持问题：<a href="https://github.com/WaterDJiang/geo-action-privacy/issues">GitHub Issues</a></p>
+      <p>开发者网站：<a href="https://www.wattter.cn">www.wattter.cn</a></p>
+    </section>
+  </main>
+  <footer>© 2026 Wattter · Geo Action</footer>
+</body>
+</html>
+
