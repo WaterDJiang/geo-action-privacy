@@ -4,7 +4,7 @@ Last updated: July 17, 2026
 
 Geo Action is a Chrome extension that adapts Markdown content actively uploaded or entered by the user and creates editable drafts on content platforms selected by the user. It does not automatically publish content.
 
-Geo Action handles user-provided Markdown and images, necessary selected-platform authentication state, draft results, local workspace settings and history, and the minimum native-editor state required to create and verify Twitter/X and Xiaohongshu drafts.
+Geo Action handles user-provided Markdown and images, necessary selected-platform authentication state, draft results, the current editing session, recoverable content-draft history, interface preferences, and the minimum native-editor state required to create and verify Twitter/X and Xiaohongshu drafts. Each newly opened Side Panel starts with a blank editing session; previous content can be restored explicitly from local history, while interface switch preferences persist across sessions.
 
 Data is used only to adapt content, check login state, transfer user-selected images, create and verify drafts, restore local state, and prevent duplicates. Local state remains in `chrome.storage.local` until cleared or the extension is uninstalled. Authentication cookies remain managed by Chrome and the selected platform.
 
@@ -16,4 +16,3 @@ Geo Action's use of information received from Chrome permissions and target plat
 
 - Privacy and support issues: <https://github.com/WaterDJiang/geo-action-privacy/issues>
 - Developer website: <https://www.wattter.cn>
-
