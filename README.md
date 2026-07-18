@@ -1,6 +1,6 @@
-# Geo Action Privacy
+# GEO Action Privacy
 
-Public privacy-policy site for the Geo Action Chrome extension.
+Public privacy-policy site for the GEO Action Chrome extension.
 
 - Live privacy policy: <https://waterdjiang.github.io/geo-action-privacy/>
 - English version: <https://waterdjiang.github.io/geo-action-privacy/privacy-en.html>
@@ -14,5 +14,4 @@ In repository settings, select **Pages → Source → GitHub Actions** if it is 
 
 ## Scope
 
-This repository contains only the public privacy policy and its static website. It does not contain the Geo Action extension source code, user content, credentials, analytics, or platform data.
-
+This repository contains only the public privacy policy and its static website. It does not contain the GEO Action extension source code, user content, credentials, analytics, or platform data.

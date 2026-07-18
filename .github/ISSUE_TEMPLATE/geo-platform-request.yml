@@ -1,0 +1,48 @@
+name: 新增 GEO 平台
+description: 申请 GEO Action 支持新的内容平台或创作后台
+title: "[平台需求] "
+body:
+  - type: input
+    id: platform
+    attributes:
+      label: 平台名称
+      placeholder: 例如：InfoQ
+    validations:
+      required: true
+  - type: input
+    id: homepage
+    attributes:
+      label: 平台网址
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: input
+    id: editor
+    attributes:
+      label: 创作后台地址
+      description: 如果需要登录，可只填写登录后进入编辑器的公开地址。
+      placeholder: https://example.com/editor
+  - type: dropdown
+    id: content_type
+    attributes:
+      label: 希望支持的内容类型
+      options:
+        - 图文草稿
+        - Markdown 草稿
+        - HTML 草稿
+        - 纯文本或长文草稿
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 补充说明
+      description: 可补充封面、标签、摘要、登录方式或当前人工操作流程；请勿提交账号、Cookie 或 token。
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 隐私确认
+      options:
+        - label: 我没有在 Issue 中填写账号、Cookie、token 或其他隐私信息。
+          required: true
