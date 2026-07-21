@@ -1,16 +1,20 @@
 # GEO Action Privacy Policy
 
-Last updated: July 17, 2026
+Last updated: July 21, 2026
 
 GEO Action is a Chrome extension that adapts Markdown content actively uploaded or entered by the user and creates editable drafts on content platforms selected by the user. It does not automatically publish content.
 
-GEO Action handles user-provided Markdown and images, necessary selected-platform authentication state, draft results, the current editing session, recoverable content-draft history, interface preferences, and the minimum native-editor state required to create and verify Twitter/X and Xiaohongshu drafts. Each newly opened Side Panel starts with a blank editing session; previous content can be restored explicitly from local history, while interface switch preferences persist across sessions.
+GEO Action handles user-provided Markdown and images, necessary selected-platform authentication state, draft results, the current editing session, recoverable content-draft history, interface preferences, and the minimum native-editor state required to create and verify drafts. A one-time scheduled task stores its trigger time, immutable article and destination snapshot, status, and related draft-task identifier. GEO Action also stores API and Webhook connections configured by the user, including endpoint, model, authentication secret, timeout, and response mapping. Each newly opened Side Panel starts with a blank editing session; previous content can be restored explicitly from local history, while interface switch preferences persist across sessions.
 
-Data is used only to adapt content, check login state, transfer user-selected images, create and verify drafts, restore local state, and prevent duplicates. Local state remains in `chrome.storage.local` until cleared or the extension is uninstalled. Authentication cookies remain managed by Chrome and the selected platform.
+Data is used only to adapt content, check login state, transfer user-selected images, create and verify drafts directly or from a user-created one-time schedule, restore local state, prevent duplicates, and execute AI or workflow requests explicitly started by the user. Local state, scheduled snapshots, API keys, and Webhook URLs remain in `chrome.storage.local` until the related task or connection is deleted, storage is cleared, or the extension is uninstalled. Authentication cookies remain managed by Chrome and the selected platform. A complete backup containing credentials is encrypted with a user passphrase using PBKDF2-SHA-256 and AES-256-GCM; the separate configuration template excludes authentication secrets.
 
-When the user starts draft creation, necessary data is sent directly to the selected platform. The developer does not operate a content relay server and does not receive user drafts or platform cookies. GEO Action does not sell, rent, or use data for advertising, data brokerage, creditworthiness, lending, or unrelated purposes.
+Only when the user clicks AI generation or starts a workflow does GEO Action send the scope selected by the user (title only, title and summary, or the complete article) and the prompt, using the configured JSON template, to the third-party AI API or generic JSON Webhook explicitly selected by the user. Those services process data under their own privacy policies. Keys and content are not sent to the extension developer.
 
-All executable code is packaged with the extension. GEO Action does not load remote code and stops on CAPTCHA, risk-control, or security-verification pages.
+When the user starts draft creation, or a one-time schedule previously created by the user becomes due, necessary data is sent directly to the selected platform. The developer does not operate a content relay server and does not receive user drafts or platform cookies. GEO Action does not sell, rent, or use data for advertising, data brokerage, creditworthiness, lending, or unrelated purposes.
+
+The `alarms` permission is used only for user-created one-time draft triggers. It is not used for periodic scraping, advertising, or analytics. The `scripting` permission runs packaged code only in a user-selected destination's native editor when required to write, save, and verify a draft. HTTP/HTTPS host access covers registered platform endpoints, remote images explicitly referenced by user Markdown, and AI APIs or generic JSON Webhooks configured and selected by the user.
+
+All executable code is packaged with the extension. Third-party responses are handled only as text, JSON, or images and are never executed as code. GEO Action does not load remote code and stops on CAPTCHA, risk-control, or security-verification pages.
 
 GEO Action's use of information received from Chrome permissions and target platforms will adhere to the Chrome Web Store User Data Policy, including the Limited Use requirements.
 

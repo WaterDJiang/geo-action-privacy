@@ -35,7 +35,7 @@
   <header>
     <div class="brand"><span class="mark">G</span><span>GEO ACTION · PRIVACY</span></div>
     <h1>隐私政策</h1>
-    <div class="meta">最后更新日期：2026 年 7 月 17 日</div>
+    <div class="meta">最后更新日期：2026 年 7 月 21 日</div>
     <nav aria-label="Policy links">
       <a href="#data">处理的数据</a><a href="#sharing">存储与共享</a><a href="#permissions">权限</a><a href="#limited-use">Limited Use</a><a href="privacy-en.html" lang="en">English</a>
     </nav>
@@ -52,32 +52,36 @@
         <li>目标平台必要的登录 Cookie、会话状态或 CSRF 状态。</li>
         <li>平台登录状态、草稿 ID、编辑链接、任务阶段、错误和时间。</li>
         <li>本地保存的当前编辑会话、可恢复内容草稿历史、平台选择、发布清单、界面偏好、任务历史和重复指纹。</li>
-        <li>Twitter/X 与小红书草稿流程中，为写入和验证草稿所需的目标编辑器状态。</li>
+        <li>需要原生编辑器的草稿流程中，为写入和验证草稿所需的目标编辑器状态。</li>
+        <li>用户主动创建的一次性定时任务：触发时间、不可变文章与平台选择快照、状态和关联草稿任务 ID。</li>
+        <li>用户自行配置的对话、做图和通用 JSON Webhook 请求地址、模型、鉴权密钥、JSON 请求体模板、超时及响应字段设置。</li>
       </ul>
       <p style="margin-top:14px">我们不持续监控浏览历史，不扫描无关网页，不采集广告标识或行为分析数据，不把平台 Cookie、正文或图片发送给扩展开发者。</p>
     </section>
     <section id="sharing">
       <h2>使用、存储与共享</h2>
-      <p>数据仅用于解析和适配 Markdown、检查登录、转存用户选择的图片、创建和验证草稿、恢复本地状态及避免重复草稿。</p>
-      <p>本地状态保存在 <code>chrome.storage.local</code>，直至用户清除扩展数据或卸载扩展。平台 Cookie 由 Chrome 和目标平台管理，不复制到 GEO Action 记录。</p>
-      <p>用户点击创建草稿后，必要内容只会直接发送到用户选择的平台；远程图片会从 Markdown 明确引用的来源读取并转存。开发者不运营内容中转服务器，不接收用户草稿或平台 Cookie。</p>
+      <p>数据仅用于解析和适配 Markdown、检查登录、转存用户选择的图片、直接或定时触发创建和验证草稿、恢复本地状态、避免重复草稿，以及执行用户主动发起的 AI 或工作流请求。</p>
+      <p>本地状态、定时快照、API 密钥和 Webhook 地址保存在 <code>chrome.storage.local</code>，直至用户删除对应任务/连接、清除扩展数据或卸载扩展。完整备份包含密钥时使用用户口令经 PBKDF2-SHA-256 派生密钥并用 AES-256-GCM 加密；无密钥配置模板排除鉴权秘密。</p>
+      <p>用户直接创建草稿，或用户预先设置的一次性定时任务到点时，必要内容只会直接发送到所选平台；远程图片会从 Markdown 明确引用的来源读取并转存。开发者不运营内容中转服务器，不接收用户草稿或平台 Cookie。</p>
+      <p>只有用户点击 AI 生成或调用工作流时，用户选择的发送范围（仅标题、标题与摘要或完整文章）和提示词才会发送到其明确选择的第三方 AI API 或通用 JSON Webhook。第三方服务按其自身隐私政策处理数据；密钥和内容不会发送给扩展开发者。</p>
       <p>我们不出售、出租或将数据用于广告、数据经纪、信用评估、贷款或与草稿创建无关的用途。</p>
     </section>
     <section id="permissions">
       <h2>权限说明</h2>
       <ul>
-        <li><code>storage</code>、<code>unlimitedStorage</code>：保存本地工作区、设置、历史以及较长 Markdown 和图片数据。</li>
+        <li><code>storage</code>、<code>unlimitedStorage</code>：保存本地工作区、API/Webhook 配置与密钥、设置、历史以及较长 Markdown 和图片数据。</li>
         <li><code>cookies</code>：检查目标平台登录状态并读取草稿流程必要的会话或 CSRF Cookie。</li>
         <li><code>declarativeNetRequest</code>、<code>declarativeNetRequestWithHostAccess</code>：临时设置平台接口所需请求头，任务后清理。</li>
         <li><code>sidePanel</code>：展示编辑与草稿工作流。</li>
         <li><code>tabs</code>：打开登录页、原生编辑器、草稿和支持页面。</li>
-        <li><code>scripting</code>：仅在用户选择的 Twitter/X 或小红书编辑器中执行扩展包内脚本，写入、保存并验证草稿。</li>
-        <li><code>http://*/*</code>、<code>https://*/*</code>：访问平台注册端点和用户 Markdown 明确引用的远程图片。</li>
+        <li><code>scripting</code>：仅在用户选择且需要原生编辑器的目标平台标签页中执行扩展包内脚本，写入、保存并验证草稿。</li>
+        <li><code>alarms</code>：为用户主动创建的一次性定时任务设置触发，不用于周期抓取、广告或分析。</li>
+        <li><code>http://*/*</code>、<code>https://*/*</code>：访问平台注册端点、用户 Markdown 明确引用的远程图片，以及用户主动配置并选择调用的 AI API 或通用 JSON Webhook。</li>
       </ul>
     </section>
     <section>
       <h2>安全措施</h2>
-      <p>所有可执行代码均包含在扩展包中，不加载远程代码。平台请求使用 HTTPS。身份验证 Cookie 不写入任务历史或开发者日志。遇到验证码、风控、安全验证或不兼容的平台状态时，扩展停止对应平台。</p>
+      <p>所有可执行代码均包含在扩展包中，不加载远程代码；第三方响应只按文本、JSON 或图片处理，不作为代码执行。平台请求使用 HTTPS。身份验证 Cookie 不写入任务历史或开发者日志。遇到验证码、风控、安全验证或不兼容的平台状态时，扩展停止对应平台。</p>
     </section>
     <section id="limited-use">
       <h2>Chrome Web Store Limited Use</h2>
@@ -85,7 +89,7 @@
     </section>
     <section>
       <h2>用户控制与保留</h2>
-      <p>用户可以编辑或清除本地状态、卸载扩展删除全部本地数据、不选择任何特定平台，并在各平台草稿箱查看、编辑或删除已创建草稿。平台草稿由相应平台按其政策保留。</p>
+      <p>用户可以编辑或删除 API/Webhook 连接、取消定时任务、编辑或清除本地状态、卸载扩展删除全部本地数据、不选择任何特定平台，并在各平台草稿箱查看、编辑或删除已创建草稿。</p>
     </section>
     <section>
       <h2>儿童隐私与政策更新</h2>
