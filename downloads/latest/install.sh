@@ -169,7 +169,12 @@ done
 
 printf '%s\n' "GEO Action CLI 0.3.0 安装完成。"
 printf '%s\n' "CLI：$cli_path"
-printf '%s\n' "请保持 Chrome 与 GEO Action 启用，然后运行："
+printf '%s\n' "下一步："
+printf '%s\n' "1. 保持 Chrome 与 GEO Action 启用，在插件“CLI 与本地 AI”页点击“重新连接 CLI”。"
+printf '%s\n' "2. 重新打开 AI 工具会话；无需手动启动 daemon。"
+printf '%s\n' '3. Codex 输入：$geo-action 请把 /绝对路径/article.md 准备为微信公众号和知乎草稿'
+printf '%s\n' '4. Claude Code 输入：/geo-action 请把 /绝对路径/article.md 准备为微信公众号和知乎草稿'
+printf '%s\n' "5. 直接使用 CLI 时先运行："
 printf '%s\n' "$cli_path doctor"
 case ":${PATH:-}:" in
   *":$binary_directory:"*) ;;

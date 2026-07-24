@@ -144,7 +144,12 @@ public static class GeoActionNativeHost {
   }
 
   Write-Host 'GEO Action CLI 0.3.0 安装完成。'
-  Write-Host "请重新打开终端并运行：geo-action doctor"
+  Write-Host '下一步：'
+  Write-Host '1. 保持 Chrome 与 GEO Action 启用，在插件“CLI 与本地 AI”页点击“重新连接 CLI”。'
+  Write-Host '2. 重新打开终端和 AI 工具会话；无需手动启动 daemon。'
+  Write-Host '3. Codex 输入：$geo-action 请把 C:\绝对路径\article.md 准备为微信公众号和知乎草稿'
+  Write-Host '4. Claude Code 输入：/geo-action 请把 C:\绝对路径\article.md 准备为微信公众号和知乎草稿'
+  Write-Host '5. 直接使用 CLI 时先运行：geo-action doctor'
 } finally {
   Remove-Item -Recurse -Force $temporaryDirectory -ErrorAction SilentlyContinue
 }
