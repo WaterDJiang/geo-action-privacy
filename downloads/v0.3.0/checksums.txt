@@ -1,4 +1,4 @@
-18d7ebf9cba9ab5a63caa8294739e1778104e4aebb1ddc44e1b9dbc1d0018cd2  geo-action-cli-0.3.0.tar.gz
-521689f8f2f5712676d3b4b34b5d9a64bcfee9cf7110161c4b108ae9515c1d71  geo-action-cli-0.3.0.zip
-18d7ebf9cba9ab5a63caa8294739e1778104e4aebb1ddc44e1b9dbc1d0018cd2  geo-action-cli.tar.gz
-521689f8f2f5712676d3b4b34b5d9a64bcfee9cf7110161c4b108ae9515c1d71  geo-action-cli.zip
+74cc1ac5f4a63e892373e403ac4defe308867538011f1576b2342c401c561851  geo-action-cli-0.3.0.tar.gz
+f2de5ffedfa8285bf1ba90cf1bee1cd545e4f47b44d00f775d579b2befc2cc94  geo-action-cli-0.3.0.zip
+74cc1ac5f4a63e892373e403ac4defe308867538011f1576b2342c401c561851  geo-action-cli.tar.gz
+f2de5ffedfa8285bf1ba90cf1bee1cd545e4f47b44d00f775d579b2befc2cc94  geo-action-cli.zip
