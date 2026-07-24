@@ -35,7 +35,7 @@
   <header>
     <div class="brand"><span class="mark">G</span><span>GEO ACTION · PRIVACY</span></div>
     <h1>隐私政策</h1>
-    <div class="meta">最后更新日期：2026 年 7 月 21 日</div>
+    <div class="meta">最后更新日期：2026 年 7 月 24 日</div>
     <nav aria-label="Policy links">
       <a href="#data">处理的数据</a><a href="#sharing">存储与共享</a><a href="#permissions">权限</a><a href="#limited-use">Limited Use</a><a href="privacy-en.html" lang="en">English</a>
     </nav>
@@ -55,15 +55,17 @@
         <li>需要原生编辑器的草稿流程中，为写入和验证草稿所需的目标编辑器状态。</li>
         <li>用户主动创建的一次性定时任务：触发时间、不可变文章与平台选择快照、状态和关联草稿任务 ID。</li>
         <li>用户自行配置的对话、做图和通用 JSON Webhook 请求地址、模型、鉴权密钥、JSON 请求体模板、超时及响应字段设置。</li>
+        <li>用户通过可选本地 CLI 主动提交的 Markdown、图片、目标平台、确认标记、请求 ID，以及对应的准备记录与任务状态。</li>
       </ul>
       <p style="margin-top:14px">我们不持续监控浏览历史，不扫描无关网页，不采集广告标识或行为分析数据，不把平台 Cookie、正文或图片发送给扩展开发者。</p>
     </section>
     <section id="sharing">
       <h2>使用、存储与共享</h2>
-      <p>数据仅用于解析和适配 Markdown、检查登录、转存用户选择的图片、直接或定时触发创建和验证草稿、恢复本地状态、避免重复草稿，以及执行用户主动发起的 AI 或工作流请求。</p>
+      <p>数据仅用于解析和适配 Markdown、检查登录、转存用户选择的图片、直接、定时或经本地 CLI 明确确认后创建和验证草稿、恢复本地状态、避免重复草稿，以及执行用户主动发起的 AI 或工作流请求。</p>
       <p>本地状态、定时快照、API 密钥和 Webhook 地址保存在 <code>chrome.storage.local</code>，直至用户删除对应任务/连接、清除扩展数据或卸载扩展。完整备份包含密钥时使用用户口令经 PBKDF2-SHA-256 派生密钥并用 AES-256-GCM 加密；无密钥配置模板排除鉴权秘密。</p>
       <p>用户直接创建草稿，或用户预先设置的一次性定时任务到点时，必要内容只会直接发送到所选平台；远程图片会从 Markdown 明确引用的来源读取并转存。开发者不运营内容中转服务器，不接收用户草稿或平台 Cookie。</p>
       <p>只有用户点击 AI 生成或调用工作流时，用户选择的发送范围（仅标题、标题与摘要或完整文章）和提示词才会发送到其明确选择的第三方 AI API 或通用 JSON Webhook。第三方服务按其自身隐私政策处理数据；密钥和内容不会发送给扩展开发者。</p>
+      <p>可选本地 CLI 通过用户安装的 Native Host 与扩展通信。Native Host 只允许安装时指定的 GEO Action 扩展 ID，只接受检查、准备、确认创建、查询和取消命令；它不读取平台 Cookie、扩展 API 密钥或任意扩展存储，也不能公开发布、访问任意网址或执行任意脚本。</p>
       <p>我们不出售、出租或将数据用于广告、数据经纪、信用评估、贷款或与草稿创建无关的用途。</p>
     </section>
     <section id="permissions">
@@ -76,6 +78,7 @@
         <li><code>tabs</code>：打开登录页、原生编辑器、草稿和支持页面。</li>
         <li><code>scripting</code>：仅在用户选择且需要原生编辑器的目标平台标签页中执行扩展包内脚本，写入、保存并验证草稿。</li>
         <li><code>alarms</code>：为用户主动创建的一次性定时任务设置触发，不用于周期抓取、广告或分析。</li>
+        <li><code>nativeMessaging</code>：连接用户主动安装、且只允许当前 GEO Action 扩展 ID 的本机 CLI / Native Host；仅处理检查、准备、确认创建和查询/取消 CLI 任务。</li>
         <li><code>http://*/*</code>、<code>https://*/*</code>：访问平台注册端点、用户 Markdown 明确引用的远程图片，以及用户主动配置并选择调用的 AI API 或通用 JSON Webhook。</li>
       </ul>
     </section>
