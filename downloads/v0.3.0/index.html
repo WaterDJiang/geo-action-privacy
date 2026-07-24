@@ -47,9 +47,13 @@
 
   <h2>快速开始</h2>
   <pre><code>geo-action doctor
-geo-action draft prepare article.md --platform wechat,zhihu
+geo-action draft prepare article.md --platform wechat,zhihu \
+  --asset body-1.png --asset body-2.png --cover cover.png
 geo-action draft create &lt;prepared-id&gt; --confirm
-geo-action task watch &lt;task-id&gt;</code></pre>
+geo-action task watch &lt;task-id&gt;
+geo-action task open &lt;task-id&gt; --confirm</code></pre>
+  <p>Markdown 相对正文图片会按文章目录自动读取；额外正文图片可重复使用 <code>--asset</code>，统一封面使用 <code>--cover</code>。</p>
+  <p>任务结束会返回逐平台结果和草稿链接。先展示列表，只有用户决定后才运行 <code>task open --confirm</code> 一次打开全部可用草稿；任务完成不会自动弹出标签页。</p>
   <p class="notice">准备阶段不会创建草稿。只有展示检查结果并取得用户确认后，才运行 <code>draft create --confirm</code>。</p>
   <p><a href="../../">隐私政策</a> · <a href="https://github.com/WaterDJiang/geo-action-privacy/issues">支持与问题</a></p>
 </body>
