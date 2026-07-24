@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEO Action 0.3.0 CLI 下载</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; }
+    body { max-width: 820px; margin: 0 auto; padding: 48px 20px 72px; color: #f2f2f3; background: #0a0a0c; line-height: 1.65; }
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 36px; }
+    p, li { color: #b7b7c1; }
+    a { color: #8d89ff; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre { overflow-x: auto; padding: 14px; border: 1px solid #27272e; border-radius: 8px; background: #111114; }
+    .notice { padding: 14px; border-left: 3px solid #72f0cf; background: #111114; }
+  </style>
+</head>
+<body>
+  <h1>GEO Action 0.3.0 CLI</h1>
+  <p>本页提供 Native Host、CLI 和 AI Skill 的公开安装包。CLI 只创建平台草稿，不执行公开发布。</p>
+
+  <h2>安装</h2>
+  <p>先在 GEO Action 中打开“设置 → CLI 与本地 AI”，复制当前扩展 ID。</p>
+  <p>macOS / Linux：</p>
+  <pre><code>curl -fsSL https://waterdjiang.github.io/geo-action-privacy/downloads/v0.3.0/install.sh \
+  | bash -s -- --extension-id &lt;当前扩展ID&gt;</code></pre>
+  <p>Windows PowerShell：</p>
+  <pre><code>&amp; ([scriptblock]::Create((irm https://waterdjiang.github.io/geo-action-privacy/downloads/v0.3.0/install.ps1))) `
+  -ExtensionId &lt;当前扩展ID&gt;</code></pre>
+
+  <h2>手工下载</h2>
+  <ul>
+    <li><a href="./geo-action-cli.tar.gz">geo-action-cli.tar.gz</a>（macOS / Linux）</li>
+    <li><a href="./geo-action-cli.zip">geo-action-cli.zip</a>（Windows 或通用解压）</li>
+    <li><a href="./checksums.txt">checksums.txt</a>（SHA-256）</li>
+    <li><a href="./install.sh">install.sh</a> / <a href="./install.ps1">install.ps1</a></li>
+  </ul>
+
+  <h2>快速开始</h2>
+  <pre><code>geo-action doctor
+geo-action draft prepare article.md --platform wechat,zhihu
+geo-action draft create &lt;prepared-id&gt; --confirm
+geo-action task watch &lt;task-id&gt;</code></pre>
+  <p class="notice">准备阶段不会创建草稿。只有展示检查结果并取得用户确认后，才运行 <code>draft create --confirm</code>。</p>
+  <p><a href="../../">隐私政策</a> · <a href="https://github.com/WaterDJiang/geo-action-privacy/issues">支持与问题</a></p>
+</body>
+</html>

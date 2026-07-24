@@ -14,4 +14,7 @@ In repository settings, select **Pages → Source → GitHub Actions** if it is 
 
 ## Scope
 
-This repository contains only the public privacy policy and its static website. It does not contain the GEO Action extension source code, user content, credentials, analytics, or platform data.
+This repository contains the public privacy policy, its static website, and versioned
+GEO Action CLI/Native Host installers and binary packages under `downloads/`. It does
+not contain the GEO Action extension source code, user content, credentials, analytics,
+or platform data.
