@@ -1,6 +1,6 @@
 # GEO Action Privacy Policy
 
-Last updated: July 24, 2026
+Last updated: July 27, 2026
 
 GEO Action is a Chrome extension that adapts Markdown content actively uploaded or entered by the user and creates editable drafts on content platforms selected by the user. It does not automatically publish content.
 
@@ -14,7 +14,7 @@ The optional local CLI communicates through a user-installed native messaging ho
 
 When the user starts draft creation, or a one-time schedule previously created by the user becomes due, necessary data is sent directly to the selected platform. The developer does not operate a content relay server and does not receive user drafts or platform cookies. GEO Action does not sell, rent, or use data for advertising, data brokerage, creditworthiness, lending, or unrelated purposes.
 
-The `alarms` permission is used only for user-created one-time draft triggers. It is not used for periodic scraping, advertising, or analytics. `nativeMessaging` is optional and requested only after the user clicks Enable CLI connection in Help; declining it does not affect normal features. When granted, it connects only to the local CLI/native host installed by the user and restricted to the current GEO Action extension ID. Its command set may inspect and prepare content, create drafts after confirmation, query or cancel CLI-created tasks, and, after a separate explicit confirmation, open only draft URLs already returned by that task; it does not accept arbitrary URLs. The `scripting` permission runs packaged code only in a user-selected destination's native editor when required to write, save, and verify a draft. HTTP/HTTPS host access covers registered platform endpoints, remote images explicitly referenced by user Markdown, and AI APIs or generic JSON Webhooks configured and selected by the user.
+The `alarms` permission is used only for user-created one-time draft triggers. It is not used for periodic scraping, advertising, or analytics. `nativeMessaging` is optional and requested only after the user clicks Enable CLI connection in Help; declining it does not affect normal features. When granted, it connects only to the local CLI/native host installed by the user and restricted to the current GEO Action extension ID. Its limited command set may read normalized publishing-list summaries and saved GEO tags, inspect and prepare content, create drafts after confirmation, query or cancel CLI-created tasks, and, after a separate explicit confirmation, open only draft URLs already returned by that task. It does not expose arbitrary Chrome storage, cookies, API keys, or arbitrary URLs. The `scripting` permission runs packaged code only in a user-selected destination's native editor when required to write, save, and verify a draft. HTTP/HTTPS host access covers registered platform endpoints, remote images explicitly referenced by user Markdown, and AI APIs or generic JSON Webhooks configured and selected by the user.
 
 All executable code is packaged with the extension. Third-party responses are handled only as text, JSON, or images and are never executed as code. GEO Action does not load remote code and stops on CAPTCHA, risk-control, or security-verification pages.
 
