@@ -65,7 +65,7 @@
       <p>本地状态、定时快照、API 密钥和 Webhook 地址保存在 <code>chrome.storage.local</code>，直至用户删除对应任务/连接、清除扩展数据或卸载扩展。完整备份包含密钥时使用用户口令经 PBKDF2-SHA-256 派生密钥并用 AES-256-GCM 加密；无密钥配置模板排除鉴权秘密。</p>
       <p>用户直接创建草稿，或用户预先设置的一次性定时任务到点时，必要内容只会直接发送到所选平台；远程图片会从 Markdown 明确引用的来源读取并转存。开发者不运营内容中转服务器，不接收用户草稿或平台 Cookie。</p>
       <p>只有用户点击 AI 生成或调用工作流时，用户选择的发送范围（仅标题、标题与摘要或完整文章）和提示词才会发送到其明确选择的第三方 AI API 或通用 JSON Webhook。第三方服务按其自身隐私政策处理数据；密钥和内容不会发送给扩展开发者。</p>
-      <p>可选本地 CLI 通过用户安装的 Native Host 与扩展通信。Native Host 只允许安装时指定的 GEO Action 扩展 ID，只接受检查、准备、确认创建、查询和取消命令；它不读取平台 Cookie、扩展 API 密钥或任意扩展存储，也不能公开发布、访问任意网址或执行任意脚本。</p>
+      <p>可选本地 CLI 通过用户安装的 Native Host 与扩展通信。Native Host 只允许安装时指定的 GEO Action 扩展 ID。CLI 可在用户显式传参时仅对不可变准备快照执行确定性安全修复，不覆盖原 Markdown、不调用 AI；它不读取平台 Cookie、扩展 API 密钥或任意扩展存储，也不能公开发布、访问任意网址或执行任意脚本。</p>
       <p>我们不出售、出租或将数据用于广告、数据经纪、信用评估、贷款或与草稿创建无关的用途。</p>
     </section>
     <section id="permissions">
@@ -78,7 +78,7 @@
         <li><code>tabs</code>：打开登录页、原生编辑器、草稿和支持页面。</li>
         <li><code>scripting</code>：仅在用户选择且需要原生编辑器的目标平台标签页中执行扩展包内脚本，写入、保存并验证草稿。</li>
         <li><code>alarms</code>：为用户主动创建的一次性定时任务设置触发，不用于周期抓取、广告或分析。</li>
-        <li><code>nativeMessaging</code>（可选）：只有用户从“CLI 与本地 AI”帮助页点击启用时才申请，用于连接用户主动安装、且只允许当前 GEO Action 扩展 ID 的本机 CLI / Native Host；拒绝或未申请不影响普通功能。受限命令可以读取经过规范化的发布清单摘要和通用 GEO 标签、检查和准备内容、确认创建、查询/取消 CLI 任务，以及在用户再次明确确认后打开该任务结果中已有的草稿链接；不返回任意 Chrome storage、Cookie 或 API 密钥，不接受任意 URL。</li>
+        <li><code>nativeMessaging</code>（可选）：只有用户从“CLI 与本地 AI”帮助页点击启用时才申请，用于连接用户主动安装、且只允许当前 GEO Action 扩展 ID 的本机 CLI / Native Host；拒绝或未申请不影响普通功能。受限命令可以读取经过规范化的发布清单摘要和通用 GEO 标签、检查和准备内容、对准备快照执行用户显式要求的确定性安全修复、确认创建、查询/取消 CLI 任务，以及在用户再次明确确认后打开该任务结果中已有的草稿链接；不返回任意 Chrome storage、Cookie 或 API 密钥，不接受任意 URL。</li>
         <li><code>http://*/*</code>、<code>https://*/*</code>：访问平台注册端点、用户 Markdown 明确引用的远程图片，以及用户主动配置并选择调用的 AI API 或通用 JSON Webhook。</li>
       </ul>
     </section>

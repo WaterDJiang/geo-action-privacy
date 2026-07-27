@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEO Action 0.3.3 CLI 下载</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; }
+    body { max-width: 820px; margin: 0 auto; padding: 48px 20px 72px; color: #f2f2f3; background: #0a0a0c; line-height: 1.65; }
+    h1 { margin-bottom: 6px; }
+    h2 { margin-top: 36px; }
+    p, li { color: #b7b7c1; }
+    a { color: #8d89ff; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre { overflow-x: auto; padding: 14px; border: 1px solid #27272e; border-radius: 8px; background: #111114; }
+    .notice { padding: 14px; border-left: 3px solid #72f0cf; background: #111114; }
+  </style>
+</head>
+<body>
+  <h1>GEO Action 0.3.3 CLI</h1>
+  <p>本页提供 Native Host、CLI 和 AI Skill 的公开安装包。CLI 只创建平台草稿，不执行公开发布。</p>
+
+  <h2>安装</h2>
+  <p>先在 GEO Action 中打开“设置 → CLI 与本地 AI”，点击“启用 CLI 连接（可选）”，再复制当前扩展 ID。</p>
+  <p>macOS / Linux：</p>
+  <pre><code>curl -fsSL https://waterdjiang.github.io/geo-action-privacy/downloads/v0.3.3/install.sh \
+  | bash -s -- --extension-id &lt;当前扩展ID&gt;</code></pre>
+  <p>Windows PowerShell：</p>
+  <pre><code>&amp; ([scriptblock]::Create((irm https://waterdjiang.github.io/geo-action-privacy/downloads/v0.3.3/install.ps1))) `
+  -ExtensionId &lt;当前扩展ID&gt;</code></pre>
+
+  <h2>手工下载</h2>
+  <ul>
+    <li><a href="./geo-action-cli.tar.gz">geo-action-cli.tar.gz</a>（macOS / Linux）</li>
+    <li><a href="./geo-action-cli.zip">geo-action-cli.zip</a>（Windows 或通用解压）</li>
+    <li><a href="./checksums.txt">checksums.txt</a>（SHA-256）</li>
+    <li><a href="./install.sh">install.sh</a> / <a href="./install.ps1">install.ps1</a></li>
+  </ul>
+
+  <h2>旧 CLI 兼容</h2>
+  <p>扩展升级不会静默更新本机 CLI。0.3.0 CLI 仍可使用显式平台完成基础草稿流程；发布清单和保存标签需要 0.3.1 或更高版本。</p>
+  <pre><code>geo-action --version
+geo-action doctor</code></pre>
+  <p><code>compatible_limited</code> 表示基础流程仍可使用。需要完整能力时，重新运行本页安装命令即可原位升级 CLI 与 Skill，不会删除平台草稿。</p>
+
+  <h2>安装后怎么唤醒</h2>
+  <p>无需手动启动 daemon。保持 Chrome 与 GEO Action 运行，在插件“CLI 与本地 AI”页点击“重新连接 CLI”，然后重新打开 AI 工具会话。</p>
+  <ul>
+    <li>Codex：<code>$geo-action 请把 /绝对路径/article.md 准备为微信公众号和知乎草稿</code></li>
+    <li>Claude Code：<code>/geo-action 请把 /绝对路径/article.md 准备为微信公众号和知乎草稿</code></li>
+    <li>其他工具：明确要求“使用 GEO Action”，或直接运行 <code>geo-action doctor</code>。</li>
+  </ul>
+
+  <h2>快速开始</h2>
+  <pre><code>geo-action --version
+geo-action doctor
+geo-action publish-lists list
+geo-action tags get
+geo-action draft prepare article.md --publish-list current --use-saved-tags \
+  --asset body-1.png --asset body-2.png --cover cover.png
+geo-action draft create &lt;prepared-id&gt; --confirm
+geo-action task watch &lt;task-id&gt;
+geo-action task open &lt;task-id&gt; --confirm</code></pre>
+  <p><code>--publish-list current|all|ID|名称</code> 可读取插件保存的平台组合，并与 <code>--platform</code> 互斥。保存的通用 GEO 标签只有显式加入 <code>--use-saved-tags</code> 才会使用；它与 <code>--tag</code> 互斥。</p>
+  <p><code>--apply-safe-fixes</code> 可在准备阶段清理链接、修正标点或围栏并处理平台长度限制。修复只作用于不可变准备快照，不覆盖原 Markdown、不调用 AI，也不会自动创建草稿。</p>
+  <p>Markdown 相对正文图片会按文章目录自动读取；额外正文图片可重复使用 <code>--asset</code>，统一封面使用 <code>--cover</code>。</p>
+  <p>任务结束会返回逐平台结果和草稿链接。先展示列表，只有用户决定后才运行 <code>task open --confirm</code> 一次打开全部可用草稿；任务完成不会自动弹出标签页。</p>
+  <p class="notice">准备阶段不会创建草稿。只有展示检查结果并取得用户确认后，才运行 <code>draft create --confirm</code>。</p>
+  <p><a href="../../">隐私政策</a> · <a href="https://github.com/WaterDJiang/geo-action-privacy/issues">支持与问题</a></p>
+</body>
+</html>
